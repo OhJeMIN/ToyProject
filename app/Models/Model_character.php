@@ -27,6 +27,7 @@ class Model_character
             FROM 
                 t_character
         ');
+        
         return $characters;
     }
 }
