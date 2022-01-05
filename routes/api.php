@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Models\Model_character;
 use App\Http\Controllers\PoroController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -14,9 +15,15 @@ use App\Http\Controllers\PoroController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-foreach (File::allFiles('..\App\Routes') as $route_file) {
-    require $route_file->getPathname();
-}
+// foreach (File::allFiles('../app/Routes') as $route_file) {
+//      $route_file->getPathname();
+// }
+//require '../app/Routes/character.php';
+Route::get('/character', [PoroController::class, 'index_get']);
+
+Route::get('/character/list', [PoroController::class, 'list_get']);
+
+Route::get('/character/search', [PoroController::class, 'search_get']);
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
