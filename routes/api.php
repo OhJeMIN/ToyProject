@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\DB;
+use App\Models\Model_character;
 use App\Http\Controllers\PoroController;
 /*
 |--------------------------------------------------------------------------
@@ -14,11 +14,9 @@ use App\Http\Controllers\PoroController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
-Route::get('/test', [PoroController::class, 'test']);
-Route::get('/test1', function(){
-    $users = DB::select('SELECT * from t_character');
-});
+foreach (File::allFiles('..\App\Routes') as $route_file) {
+    require $route_file->getPathname();
+}
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();

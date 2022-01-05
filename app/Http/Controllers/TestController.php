@@ -1,13 +1,15 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 class TestController extends Controller
 {
-    public function test (Request $request) {
+    public function test(Request $request)
+    {
         var_dump('zzzz');
         $fields = $request->validate([
             'name' => 'required|string',
