@@ -6,6 +6,7 @@ use App\Models\Model_character;
 use App\Http\Controllers\PoroController;
 use App\Routes\user;
 use App\Http\Controllers\JWTAuthController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -17,6 +18,15 @@ use App\Http\Controllers\JWTAuthController;
 |
 */
 require_once app_path() . '\Routes\user.php';
+// foreach (File::allFiles('../app/Routes') as $route_file) {
+//      $route_file->getPathname();
+// }
+//require '../app/Routes/character.php';
+Route::get('/character', [PoroController::class, 'index_get']);
+
+Route::get('/character/list', [PoroController::class, 'list_get']);
+
+Route::get('/character/search', [PoroController::class, 'search_get']);
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
