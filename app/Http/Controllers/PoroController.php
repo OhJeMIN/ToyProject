@@ -3,16 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Validator;
 use App\Models\Model_character;
-
-function validator($request, $validationRules)
-{
-    $v = Validator::make($request->all(), $validationRules);
-    if ($v->fails()) {
-        return $v->errors();
-    }
-}
 
 class PoroController extends Controller
 {
@@ -24,7 +15,7 @@ class PoroController extends Controller
 
     public function index_get(Request $request)
     {
-        validator($request, $this->indexValidationRules);
+        $this->validator($request, $this->indexValidationRules);
         $character = Model_character::getCharacter($request->id);
         return $character;
     }
@@ -33,7 +24,7 @@ class PoroController extends Controller
     {
         $character_list = array();
 
-        validator($request, $this->listValidationRules);
+        $this->validator($request, $this->listValidationRules);
 
         $result = Model_character::getCharacterList($request->id);
         foreach($result as $character) {
