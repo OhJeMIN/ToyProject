@@ -31,4 +31,5 @@ Route::get('unauthorized', function() {
 
 Route::group(['middleware' => 'auth:api'], function(){
     Route::get('user', [JWTAuthController::class, 'user'])->name('api.jwt.user');
+    Route::get('logout', [JWTAuthController::class, 'logout'])->name('api.jwt.logout');
 });
