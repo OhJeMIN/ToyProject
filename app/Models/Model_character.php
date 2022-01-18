@@ -16,6 +16,7 @@ class Model_character
             WHERE
                 no = ?
         ', [$id]);
+        
         return $character;
     }
 
@@ -29,5 +30,19 @@ class Model_character
         ');
         
         return $characters;
+    }
+
+    public static function insertCharacterList($name_en, $name_kr)
+    {
+        $champion = DB::insert('
+            INSERT INTO 
+
+            champion (name_en, name_kr) 
+
+            VALUES (?,?)
+
+        ', [$name_en, $name_kr]);
+
+        return $champion;
     }
 }
