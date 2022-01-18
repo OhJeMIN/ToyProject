@@ -25,6 +25,12 @@ Route::get('/character/list', [PoroController::class, 'list_get']);
 
 Route::get('/character/search', [PoroController::class, 'search_get']);
 
+Route::get('/character/all', [PoroController::class, 'all_get']);
+
+Route::get('/character/item', [PoroController::class, 'all_item']);
+
+Route::get('/character/champion_skill', [PoroController::class, 'champ_skill']);
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
