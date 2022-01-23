@@ -14,3 +14,10 @@ https://wikidocs.net/155942
 
 
 ```php artisan make:controller 이름```
+
+
+```
+![image](https://user-images.githubusercontent.com/61536578/150666680-04a47885-7eba-4225-88dd-a0ca68394c7f.png)
+
+
+```
