@@ -95,12 +95,19 @@ class PoroController extends Controller
 
     public function search(Request $request)
     {
-        $name_kkr = array();
-        //$this->validator($request, $this->indexValidationRules);
-        // echo $request['line'];
-        // echo $request['champion'];
-        $wherelinename = Model_character::search_champion($request['champion'], $request['line']);
-        var_dump($wherelinename); 
+        $result = array();
+
+        $champion_name_list = Model_character::search_champion($request['champion'], $request['line']);
+        foreach($champion_name_list as $champion_name){
+            $result[] = array(
+                'name' => $champion_name->name_kr
+            );
+        }
+
+        return response()->json([
+            'status' => 'success',
+            'data' => $result
+        ], 200);
     }
 
 

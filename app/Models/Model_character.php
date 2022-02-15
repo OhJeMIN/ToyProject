@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Support\Facades\DB;
+use phpDocumentor\Reflection\DocBlock\Tags\Var_;
 
 class Model_character
 {
@@ -97,13 +98,12 @@ class Model_character
     {
         $wherecharacter = "";
         $whereline = "";
-        if(!empty($name_kr)) $wherecharacter = "AND name_kr LIKE ' %"."$name_kr%'";
-        if(!empty($line)) $whereline = "AND line LIKE ' %"."$line%'";
-        
+        if(!empty($name_kr)) $wherecharacter = "AND name_kr LIKE '%"."$name_kr%'";
+        if(!empty($line)) $whereline = "AND line LIKE '%"."$line%'";
         
         $query = "
             SELECT 
-                name_kr
+                DISTINCT name_kr
             FROM
                 champion AS c
                 JOIN line AS l ON (c.no = l.champion)
@@ -111,9 +111,7 @@ class Model_character
                 1=1
                 $wherecharacter
                 $whereline
-        " 
-                
-        ;
+        ";
         $query1 = htmlspecialchars_decode($query);
         $whatlookingfor = DB::select($query1);
         return $whatlookingfor; 
